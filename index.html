@@ -1,424 +1,139 @@
-:root {
-    --primary-color: #2E8B57;
-    --secondary-color: #3CB371;
-    --accent-color: #98FB98;
-    --light-color: #F0FFF0;
-    --dark-color: #006400;
-    --magic-color: #7CFC00;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Tajawal', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #90EE90, #98FB98, #F0FFF0);
-    color: var(--dark-color);
-    line-height: 1.6;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* تأثيرات الخلفية الخيالية */
-.magic-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.6;
-}
-
-.bubble {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    animation: float 15s infinite ease-in-out;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    25% { transform: translateY(-20px) translateX(10px); }
-    50% { transform: translateY(-40px) translateX(-10px); }
-    75% { transform: translateY(-20px) translateX(10px); }
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2.5rem 0;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 100, 0, 0.3);
-    border-radius: 0 0 30px 30px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 30px;
-}
-
-header::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
-    font-weight: 800;
-}
-
-header p {
-    font-size: 1.3rem;
-    opacity: 0.9;
-    position: relative;
-    font-weight: 500;
-}
-
-.main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin: 40px 0;
-}
-
-.registration-section {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 100, 0, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.registration-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 100, 0, 0.3);
-}
-
-.registration-section h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-bottom: 3px solid var(--accent-color);
-    padding-bottom: 10px;
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-}
-
-.registration-section p {
-    margin-bottom: 25px;
-    font-weight: 400;
-}
-
-.club-info {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 100, 0, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.club-info:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 100, 0, 0.3);
-}
-
-.club-info h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-bottom: 3px solid var(--accent-color);
-    padding-bottom: 10px;
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-}
-
-.club-info h3 {
-    color: var(--secondary-color);
-    margin: 20px 0 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-}
-
-.club-info p {
-    font-weight: 400;
-    margin-bottom: 15px;
-}
-
-.club-info ul {
-    padding-right: 20px;
-    margin-bottom: 20px;
-}
-
-.club-info li {
-    margin-bottom: 10px;
-    position: relative;
-    font-weight: 400;
-}
-
-.club-info li::before {
-    content: "✦";
-    color: var(--magic-color);
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-/* قسم وسائل التواصل الاجتماعي */
-.social-section {
-    background: rgba(0, 100, 0, 0.1);
-    padding: 40px 0;
-    margin-top: 40px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-}
-
-.social-section h3 {
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.social-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: var(--dark-color);
-    transition: all 0.3s ease;
-    padding: 15px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.1);
-    min-width: 100px;
-}
-
-.social-icon:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 100, 0, 0.2);
-    background: white;
-}
-
-.social-icon i {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-.social-icon span {
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-/* تلوين أيقونات وسائل التواصل */
-
-.social-icon:nth-child(1) i { color: #ea3939; } /* Instagram */
-.social-icon:nth-child(2) i { color: #141111; } /* TikTok */
-
-.social-icon:hover:nth-child(1) { background: rgba(228, 64, 94, 0.252); }
-.social-icon:hover:nth-child(2) { background: rgba(0, 0, 0, 0.19); }
-
-.form-group {
-    margin-bottom: 25px;
-    position: relative;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s;
-    background: rgba(255, 255, 255, 0.8);
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 400;
-}
-
-input:focus, select:focus, textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.3);
-    background: white;
-}
-
-textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.btn {
-    display: block;
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 700;
-    transition: all 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Tajawal', sans-serif;
-}
-
-.btn:disabled {
-    background: #cccccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: 0.5s;
-}
-
-.btn:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 100, 0, 0.4);
-}
-
-.btn:hover:not(:disabled)::before {
-    left: 100%;
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-footer {
-    background: rgba(0, 100, 0, 0.8);
-    color: white;
-    text-align: center;
-    padding: 25px 0;
-    backdrop-filter: blur(5px);
-}
-
-footer p {
-    font-weight: 400;
-    margin: 5px 0;
-}
-
-.success-message {
-    background: rgba(212, 237, 218, 0.9);
-    color: #155724;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    display: none;
-    border-left: 5px solid #28a745;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-weight: 500;
-}
-
-.error-message {
-    background: rgba(248, 215, 218, 0.9);
-    color: #721c24;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    display: none;
-    border-left: 5px solid #dc3545;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-weight: 500;
-}
-
-.magic-icon {
-    color: var(--magic-color);
-    text-shadow: 0 0 10px var(--magic-color);
-}
-
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(255,255,255,.3);
-    border-radius: 50%;
-    border-top-color: #fff;
-    animation: spin 1s ease-in-out infinite;
-    margin-right: 10px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.2rem;
-    }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cell Club - نادي الخلية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- تأثيرات الخلفية الخيالية -->
+    <div class="magic-bg" id="magicBg"></div>
     
-    .registration-section, .club-info {
-        padding: 20px;
-    }
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-seedling magic-icon"></i> Cell Club </h1>
+            <p>انضم إلى نادينا علمي بيولوجي </p>
+        </div>
+    </header>
     
-    .social-icons {
-        gap: 15px;
-    }
+    <div class="container">
+        <div class="main-content">
+            <!-- قسم التسجيل في الأعلى -->
+            <section class="registration-section">
+                <h2><i class="fas fa-scroll magic-icon"></i> نموذج التسجيل في النادي</h2>
+                <p>املأ النموذج أدناه للتقديم للانضمام إلى نادينا </p>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> تم تقديم طلبك بنجاح! تم إرسال رسالة تأكيد إلى بريدك الإلكتروني.
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.
+                </div>
+                
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="firstName"><i class="fas fa-user magic-icon"></i> الإسم :</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName"><i class="fas fa-users magic-icon"></i> اللقب :</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason"><i class="fas fa-question-circle magic-icon"></i> ماهو تخصصك ؟</label>
+                        <input id="reason" name="reason" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason"><i class="fas fa-question-circle magic-icon"></i> ماهي موهبتك ؟</label>
+                        <input id="reason" name="reason" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason"><i class="fas fa-question-circle magic-icon"></i> سبب الرغبة في دخول النادي:</label>
+                        <textarea id="reason" name="reason" placeholder="أخبرنا عن دوافعك للانضمام إلى عالمنا الخيالي..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registrationNumber"><i class="fas fa-id-card magic-icon"></i>رقم التسجيل  ( تجده في بطاقة الطالب ) :</label>
+                        <input type="text" id="registrationNumber" name="registrationNumber" placeholder="مثلا : 22223XXXXXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone magic-icon"></i> رقم الهاتف:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="0XXXXXXXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope magic-icon"></i> البريد الإلكتروني الجامعي أو الشخصي :</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> تقديم طلب الانضمام
+                    </button>
+                </form>
+            </section>
+            
+            <!-- قسم المعلومات في الأسفل -->
+            <section class="club-info">
+                <h2><i class="fas fa-magic magic-icon"></i> مرحباً بك في نادي Cell Club</h2>
+                <p>نادي Cell Club هو عالم خيالي يجمع المواهب الاستثنائية والمبدعين من مختلف التخصصات. نحن نخلق بيئة سحرية حيث تتحول الأفكار إلى واقع مذهل.</p>
+                
+                <h3><i class="fas fa-star magic-icon"></i> مميزات العضوية:</h3>
+                <ul>
+                    <li>فرص سحرية للتواصل مع محترفين في مجالك</li>
+                    <li>ورش عمل خيالية ودورات تدريبية متقدمة</li>
+                    <li>مشاريع تعاونية استثنائية مع أعضاء النادي</li>
+                    <li>تطوير المهارات الشخصية والمهنية بطرق إبداعية</li>
+                    <li>حضور فعاليات حصرية في أماكن خيالية</li>
+                </ul>
+                
+                <h3><i class="fas fa-gem magic-icon"></i> شروط العضوية:</h3>
+                <ul>
+                    <li>أن تكون طالباً أو خريجاً جامعياً</li>
+                    <li>الالتزام بقيم النادي وأهدافه السامية</li>
+                    <li>المشاركة الفعالة في أنشطة النادي السحرية</li>
+                    <li>الرغبة في الإبداع والتطوير المستمر</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- قسم وسائل التواصل الاجتماعي في الأسفل -->
+    <div class="social-section">
+        <div class="container">
+            <h3>تابعنا على وسائل التواصل الاجتماعي</h3>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/cell.bio_club?igsh=a2kyemJiMThiamUx" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.tiktok.com/@cell.bio_club?_r=1&_t=ZN-91JPkSASySU" class="social-icon" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+    </div>
     
-    .social-icon {
-        min-width: 80px;
-        padding: 10px;
-    }
-    
-    .social-icon i {
-        font-size: 2rem;
-    }
-}
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-copyright"></i> 2025 Cell Club - جميع الحقوق محفوظة</p>
+            <p>شكرا لزيارتنا </p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
