@@ -251,13 +251,12 @@ header p {
 }
 
 /* تلوين أيقونات وسائل التواصل */
-.social-icon:nth-child(1) i { color: #1877F2; } /* Facebook */
-.social-icon:nth-child(2) i { color: #E4405F; } /* Instagram */
-.social-icon:nth-child(3) i { color: #000000; } /* TikTok */
 
-.social-icon:hover:nth-child(1) { background: rgba(24, 119, 242, 0.1); }
-.social-icon:hover:nth-child(2) { background: rgba(228, 64, 95, 0.1); }
-.social-icon:hover:nth-child(3) { background: rgba(0, 0, 0, 0.1); }
+.social-icon:nth-child(1) i { color: #ea3939; } /* Instagram */
+.social-icon:nth-child(2) i { color: #141111; } /* TikTok */
+
+.social-icon:hover:nth-child(1) { background: rgba(228, 64, 94, 0.252); }
+.social-icon:hover:nth-child(2) { background: rgba(0, 0, 0, 0.19); }
 
 .form-group {
     margin-bottom: 25px;
