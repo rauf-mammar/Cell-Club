@@ -1,4 +1,3 @@
-
 // إنشاء تأثيرات الفقاعات في الخلفية
 function createBubbles() {
     const magicBg = document.getElementById('magicBg');
