@@ -13,19 +13,20 @@
     
     <header>
         <div class="container">
-            <h1><i class="fas fa-seedling magic-icon"></i> Cell Club </h1>
-            <p>انضم إلى نادينا علمي بيولوجي </p>
+            <h1><i class="fas fa-seedling magic-icon"></i> Cell Club</h1>
+            <p>انضم إلى نادينا العلمي البيولوجي</p>
         </div>
     </header>
     
     <div class="container">
         <div class="main-content">
             <section class="registration-section">
-                <h2><i class="fas fa-scroll magic-icon"></i> نموذج التسجيل في النادي</h2>
-                <p>املأ النموذج أدناه للتقديم للانضمام إلى نادينا </p>
+                <h2><i class="fas fa-scroll magic-icon"></i> نموذج التسجيل في النادي </h2>
+                <p>املأ النموذج أدناه للتقديم للانضمام إلى نادينا
+                </p>
                 
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> تم تقديم طلبك بنجاح! تم إرسال رسالة تأكيد إلى بريدك الإلكتروني.
+                    <i class="fas fa-check-circle"></i> تم تقديم طلبك بنجاح! سيتم التواصل معك قريباً.
                 </div>
                 
                 <div class="error-message" id="errorMessage">
@@ -34,33 +35,33 @@
                 
                 <form id="registrationForm">
                     <div class="form-group">
-                        <label for="firstName"><i class="fas fa-user magic-icon"></i> الإسم :</label>
+                        <label for="firstName"><i class="fas fa-user magic-icon"></i> الاسم : </label>
                         <input type="text" id="firstName" name="firstName" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="lastName"><i class="fas fa-users magic-icon"></i> اللقب :</label>
+                        <label for="lastName"><i class="fas fa-users magic-icon"></i> اللقب : </label>
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="major"><i class="fas fa-question-circle magic-icon"></i> ماهو تخصصك ؟</label>
-                        <input id="major" name="major" required>
+                        <label for="specialization"><i class="fas fa-graduation-cap magic-icon"></i> التخصص : </label>
+                        <input type="text" id="specialization" name="specialization" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="talent"><i class="fas fa-question-circle magic-icon"></i> ماهي موهبتك ؟</label>
-                        <input id="talent" name="talent" required>
+                        <label for="talent"><i class="fas fa-star magic-icon"></i> الموهبة : </label>
+                        <input type="text" id="talent" name="talent" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="reason"><i class="fas fa-question-circle magic-icon"></i> سبب الرغبة في دخول النادي:</label>
-                        <textarea id="reason" name="reason" placeholder="أخبرنا عن دوافعك للانضمام إلى عالمنا الخيالي..." required></textarea>
+                        <label for="reason"><i class="fas fa-question-circle magic-icon"></i> سبب الرغبة في الانضمام للنادي : </label>
+                        <textarea id="reason" name="reason" placeholder="أخبرنا عن دوافعك للانضمام إلى نادينا..." required></textarea>
                     </div>
                     
                     <div class="form-group">
-                        <label for="registrationNumber"><i class="fas fa-id-card magic-icon"></i> رقم التسجيل (تجده في بطاقة الطالب):</label>
-                        <input type="text" id="registrationNumber" name="registrationNumber" placeholder="مثلا : 22223XXXXXXX" required>
+                        <label for="registrationNumber"><i class="fas fa-id-card magic-icon"></i> رقم التسجيل ( ستجده في بطاقة الطالب ) : </label>
+                        <input type="text" id="registrationNumber" name="registrationNumber" placeholder="مثال: 22223XXXXXXX" required>
                     </div>
                     
                     <div class="form-group">
@@ -69,7 +70,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope magic-icon"></i> البريد الإلكتروني الجامعي أو الشخصي :</label>
+                        <label for="email"><i class="fas fa-envelope magic-icon"></i> البريد الإلكتروني:</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     
@@ -81,20 +82,22 @@
             
             <section class="club-info">
                 <h2><i class="fas fa-magic magic-icon"></i> مرحباً بك في نادي Cell Club</h2>
-                <p>نادي Cell Club هو عالم خيالي يجمع المواهب الاستثنائية والمبدعين من مختلف التخصصات. نحن نخلق بيئة سحرية حيث تتحول الأفكار إلى واقع مذهل.</p>
+                <p>نادي Cell Club هو مجتمع علمي يجمع المواهب والمبدعين من مختلف التخصصات. نحن نخلق بيئة إبداعية حيث تتحول الأفكار إلى مشاريع مذهلة.</p>
+                
                 <h3><i class="fas fa-star magic-icon"></i> مميزات العضوية:</h3>
                 <ul>
-                    <li>فرص سحرية للتواصل مع محترفين في مجالك</li>
-                    <li>ورش عمل خيالية ودورات تدريبية متقدمة</li>
-                    <li>مشاريع تعاونية استثنائية مع أعضاء النادي</li>
-                    <li>تطوير المهارات الشخصية والمهنية بطرق إبداعية</li>
-                    <li>حضور فعاليات حصرية في أماكن خيالية</li>
+                    <li>فرص للتواصل مع محترفين في مجالك</li>
+                    <li>ورش عمل ودورات تدريبية متقدمة</li>
+                    <li>مشاريع تعاونية مع أعضاء النادي</li>
+                    <li>تطوير المهارات الشخصية والمهنية</li>
+                    <li>حضور فعاليات حصرية</li>
                 </ul>
+                
                 <h3><i class="fas fa-gem magic-icon"></i> شروط العضوية:</h3>
                 <ul>
                     <li>أن تكون طالباً أو خريجاً جامعياً</li>
-                    <li>الالتزام بقيم النادي وأهدافه السامية</li>
-                    <li>المشاركة الفعالة في أنشطة النادي السحرية</li>
+                    <li>الالتزام بقيم النادي وأهدافه</li>
+                    <li>المشاركة الفعالة في أنشطة النادي</li>
                     <li>الرغبة في الإبداع والتطوير المستمر</li>
                 </ul>
             </section>
@@ -105,7 +108,7 @@
         <div class="container">
             <h3>تابعنا على وسائل التواصل الاجتماعي</h3>
             <div class="social-icons">
-                <a href="https://www.instagram.com/cell.bio_club?igsh=a2kyemJiMThiamUx" class="social-icon" target="_blank">
+                <a href="https://www.instagram.com/cellclub_3?igsh=c3I1emN4ZG5xNHY2" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
                 </a>
@@ -120,16 +123,10 @@
     <footer>
         <div class="container">
             <p><i class="fas fa-copyright"></i> 2025 Cell Club - جميع الحقوق محفوظة</p>
-            <p>شكرا لزيارتنا </p>
+            <p>شكراً لزيارتك موقعنا</p>
         </div>
     </footer>
-    <!-- Firebase (اختياري لو تستعمله) -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="app.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="emailjs.js"></script>
 
+    <script src="app.js"></script>
 </body>
 </html>
