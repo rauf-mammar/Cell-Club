@@ -2,34 +2,93 @@
 function createBubbles() {
     const magicBg = document.getElementById('magicBg');
     const bubbleCount = 15;
-    
+
     for (let i = 0; i < bubbleCount; i++) {
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
-        
+
         const size = Math.random() * 100 + 50;
         bubble.style.width = `${size}px`;
         bubble.style.height = `${size}px`;
-        
+
         bubble.style.left = `${Math.random() * 100}%`;
         bubble.style.top = `${Math.random() * 100}%`;
-        
+
         bubble.style.animationDelay = `${Math.random() * 15}s`;
-        
+
         magicBg.appendChild(bubble);
     }
 }
 
+// إنشاء جسيمات متوهجة
+function createParticles() {
+    const magicBg = document.getElementById('magicBg');
+    const particleCount = 20;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 3}s`;
+
+        magicBg.appendChild(particle);
+    }
+}
+
+// تأثير الماوس المتتبع
+function createMouseFollower() {
+    const follower = document.createElement('div');
+    follower.classList.add('mouse-follower');
+    follower.style.cssText = `
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, rgba(124, 252, 0, 0.6) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1000;
+        transition: transform 0.1s ease-out;
+        opacity: 0;
+    `;
+    document.body.appendChild(follower);
+
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        follower.style.opacity = '1';
+    });
+
+    function animateFollower() {
+        followerX += (mouseX - followerX) * 0.1;
+        followerY += (mouseY - followerY) * 0.1;
+
+        follower.style.transform = `translate(${followerX - 10}px, ${followerY - 10}px)`;
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+}
+
 // معالجة تقديم النموذج
-document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
     const originalText = submitBtn.innerHTML;
     
     // عرض حالة التحميل
     submitBtn.innerHTML = '<span class="loading"></span> جاري التسجيل...';
     submitBtn.disabled = true;
+    
+    // إخفاء الرسائل السابقة
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
     
     // جمع بيانات النموذج
     const formData = {
@@ -41,84 +100,101 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
         registrationNumber: document.getElementById('registrationNumber').value,
         phone: document.getElementById('phone').value,
         email: document.getElementById('email').value,
-        timestamp: new Date().toISOString(),
-        status: 'pending'
+        timestamp: new Date().toLocaleString('ar-SA')
     };
     
-    try {
-        // حفظ البيانات في Firebase
-        await db.collection('registrations').add(formData);
+    // محاكاة إرسال البيانات (يمكن استبدالها بخدمة حقيقية)
+    setTimeout(() => {
+        try {
+            // حفظ البيانات في localStorage (بديل مؤقت)
+            const submissions = JSON.parse(localStorage.getItem('clubSubmissions') || '[]');
+            submissions.push({
+                ...formData,
+                id: Date.now()
+            });
+            localStorage.setItem('clubSubmissions', JSON.stringify(submissions));
+            
+            // عرض رسالة النجاح
+            successMsg.style.display = 'block';
+            successMsg.innerHTML = `
+                <i class="fas fa-check-circle"></i> 
+                تم تقديم طلبك بنجاح! <br>
+                <strong>${formData.firstName} ${formData.lastName}</strong> <br>
+                سنتواصل معك على: ${formData.email}
+            `;
+            
+            // إعادة تعيين النموذج
+            document.getElementById('registrationForm').reset();
+            
+            console.log('تم التسجيل بنجاح:', formData);
+            
+        } catch (error) {
+            console.error('Error:', error);
+            errorMsg.style.display = 'block';
+            errorMsg.innerHTML = `
+                <i class="fas fa-exclamation-circle"></i> 
+                حدث خطأ أثناء التسجيل: ${error.message}
+            `;
+        } finally {
+            // إعادة زر الإرسال إلى حالته الأصلية
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
         
-        // إرسال بريد إلكتروني (محاكاة)
-        await sendWelcomeEmail(formData);
-        
-        // عرض رسالة النجاح
-        document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('errorMessage').style.display = 'none';
-        
-        // إعادة تعيين النموذج
-        this.reset();
-        
-    } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('errorMessage').style.display = 'block';
-        document.getElementById('successMessage').style.display = 'none';
-    } finally {
-        // إعادة زر الإرسال إلى حالته الأصلية
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }
-    
-    // تمرير إلى أعلى الصفحة لرؤية رسالة النجاح
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+        // التمرير إلى أعلى الصفحة لرؤية الرسالة
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2000);
 });
 
-// دالة محاكاة لإرسال البريد الإلكتروني
-async function sendWelcomeEmail(userData) {
-    // في التطبيق الحقيقي، سيتم استدعاء API لإرسال البريد الإلكتروني
-    // باستخدام Node.js و nodemailer
-    
-    const emailData = {
-        to: userData.email,
-        subject: 'مرحباً بك في نادي Cell Club!',
-        html: `
-            <div dir="rtl" style="font-family: 'Tajawal', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #90EE90, #98FB98); border-radius: 15px;">
-                <h2 style="color: #2E8B57; text-align: center;">مرحباً ${userData.firstName}!</h2>
-                <p style="font-size: 16px; line-height: 1.6;">نحن سعداء جداً بانضمامك إلى نادي Cell Club. طلبك قيد المراجعة حالياً.</p>
-                
-                <div style="background: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: #3CB371;">تفاصيل طلبك:</h3>
-                    <p><strong>الاسم:</strong> ${userData.firstName} ${userData.lastName}</p>
-                    <p><strong>التخصص:</strong> ${userData.specialization}</p>
-                    <p><strong>الموهبة:</strong> ${userData.talent}</p>
-                    <p><strong>رقم التسجيل:</strong> ${userData.registrationNumber}</p>
-                </div>
-                
-                <div style="text-align: center; margin: 30px 0;">
-                    <h3 style="color: #2E8B57;">انضم إلى مجتمعنا على Discord</h3>
-                    <p style="margin-bottom: 20px;">انقر على الرابط أدناه للانضمام إلى مجتمعنا:</p>
-                    <a href="https://discord.gg/cellclub" style="display: inline-block; background: #5865F2; color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
-                        انضم إلى Discord
-                    </a>
-                </div>
-                
-                <div style="border-top: 2px solid #98FB98; padding-top: 20px; text-align: center;">
-                    <p style="color: #666; font-size: 14px;">مع خالص التقدير،<br>فريق Cell Club</p>
-                </div>
-            </div>
-        `
+// عرض البيانات المحفوظة في console (للتطوير)
+function showSubmissions() {
+    const submissions = JSON.parse(localStorage.getItem('clubSubmissions') || '[]');
+    console.log('الطلبات المسجلة:', submissions);
+    return submissions;
+}
+
+// تأثيرات التمرير
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
-    
-    // محاكاة إرسال البريد الإلكتروني
-    console.log('إرسال بريد إلكتروني إلى:', userData.email);
-    console.log('بيانات البريد:', emailData);
-    
-    return new Promise((resolve) => {
-        setTimeout(resolve, 2000); // محاكاة وقت الإرسال
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // إضافة الأقسام للمراقبة
+    const sections = document.querySelectorAll('.registration-section, .club-info, .social-section');
+    sections.forEach(section => {
+        section.classList.add('fade-in');
+        observer.observe(section);
+    });
+
+    // إضافة تأثيرات مختلفة للعناصر
+    const headers = document.querySelectorAll('h2, h3');
+    headers.forEach((header, index) => {
+        if (index % 2 === 0) {
+            header.classList.add('slide-in-left');
+        } else {
+            header.classList.add('slide-in-right');
+        }
+        observer.observe(header);
     });
 }
 
 // تهيئة التأثيرات عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
     createBubbles();
+    createParticles();
+    createMouseFollower();
+    initScrollAnimations();
+    console.log('تم تحميل الموقع بنجاح ✅');
+
+    // عرض الطلبات السابقة في console
+    showSubmissions();
 });
